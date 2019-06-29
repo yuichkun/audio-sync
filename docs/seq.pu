@@ -1,0 +1,16 @@
+@startuml
+actor master
+collections slaves
+
+master -> server : register as master
+slaves -> server : register as slave(s) (with slave name)
+server -> master : event: new slave 
+master -> server : event: select music
+server -> slaves : broadcast: selected music url
+master -> master : start downloading music
+master -> server : event: finished downloading music
+slaves -> slaves : start downloading music
+slaves -> server : event: finished downloading music
+... Master and slaves have all finished downloading music ...
+server -> master : event: ready
+@enduml
