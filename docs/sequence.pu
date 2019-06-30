@@ -1,4 +1,4 @@
-@startuml
+@startuml sequence.svg
 actor master
 collections slaves
 
