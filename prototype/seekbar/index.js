@@ -1,7 +1,7 @@
 let ctx = new AudioContext();
 
 async function loadSampleAudio() {
-  const audioFile = await fetch('../helpers/test-audio.mp3');
+  const audioFile = await fetch('../../helpers/test-audio.mp3');
   const ab = await audioFile.arrayBuffer();
   const sound = await decodeAudio(ab);
   return sound;
