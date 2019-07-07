@@ -4,6 +4,7 @@ async function loadSampleAudio() {
   const audioFile = await fetch('../../helpers/test-audio.mp3');
   const ab = await audioFile.arrayBuffer();
   const sound = await decodeAudio(ab);
+  document.querySelector('input').style.display = 'initial';
   return sound;
 }
 
@@ -27,7 +28,12 @@ async function main(){
     source.connect(ctx.destination);
     source.start(0, offset);
   })
+  source = ctx.createBufferSource();
+  source.buffer = testAudio;
+  source.connect(ctx.destination);
   source.start(0, 0);
 }
+
+
 
 main()
